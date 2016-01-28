@@ -24,7 +24,7 @@ public class VersionTest {
 	public void basicTest() {
 		Version v1 = new Version("1.2.3");
 		
-		Version v2 = new Version("1.2");
+		Version v2 = Version.parseVersion("1.2");
 		
 		assertThat(v1.compareTo(v2) > 0);
 	}
@@ -39,6 +39,16 @@ public class VersionTest {
 	}
 	
 	@Test
+	public void tryParseTest() {
+		assertThat(Version.tryParse("")).isFalse();
+		assertThat(Version.tryParse("10"));
+		assertThat(Version.tryParse(" ")).isFalse();
+		assertThat(Version.tryParse("10.0"));
+		assertThat(Version.tryParse("10.0.1x")).isTrue();
+		assertThat(Version.tryParse("v10.0.1")).isTrue();
+	}
+	
+	@Test
 	public void greaterThanTest() {
 		Version v1 = new Version("0.1.9");
 		
@@ -49,9 +59,9 @@ public class VersionTest {
 	
 	@Test
 	public void lessThanTest() {
-		Version v1 = new Version("0.0.9");
+		Version v1 = new Version("2.0.9");
 		
-		Version v2 = new Version("0.1.0");
+		Version v2 = new Version("10.1.0");
 		
 		assertThat(v1.lessThan(v2));
 	}
@@ -87,9 +97,9 @@ public class VersionTest {
 	public void nonNumericCharactersTest() {
 		Version v1 = new Version("v1.2a.3b");
 		
-		assertThat(v1.getMajor()).isEqualTo(0d);
-		assertThat(v1.getMinor()).isEqualTo(0d);
-		assertThat(v1.getPatch()).isEqualTo(0d);
+		assertThat(v1.getMajor()).isEqualTo(1d);
+		assertThat(v1.getMinor()).isEqualTo(2d);
+		assertThat(v1.getPatch()).isEqualTo(3d);
 	}
 	
 	@Test
@@ -133,7 +143,7 @@ public class VersionTest {
 	
 	@Test
 	public void comparatorTest() {
-		Version v1 = new Version("1.0.0");
+		Version v1 = new Version("2.0.0");
 		Version v2 = new Version("0.095.3");
 		Version v3 = new Version("10.0.1");
 		Version v4 = new Version("0.0.1");
@@ -146,9 +156,9 @@ public class VersionTest {
 		
 		versions.sort(new VersionComparator());
 		
-		assertThat(versions.get(0).getVersion()).isEqualTo("0.0.1");
-		assertThat(versions.get(1).getVersion()).isEqualTo("0.095.3");
-		assertThat(versions.get(2).getVersion()).isEqualTo("1.0.0");
-		assertThat(versions.get(3).getVersion()).isEqualTo("10.0.1");
+		assertThat(versions.get(0).toString()).isEqualTo("0.0.1");
+		assertThat(versions.get(1).toString()).isEqualTo("0.095.3");
+		assertThat(versions.get(2).toString()).isEqualTo("2.0.0");
+		assertThat(versions.get(3).toString()).isEqualTo("10.0.1");
 	}
 }

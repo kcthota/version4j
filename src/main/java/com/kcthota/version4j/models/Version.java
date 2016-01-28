@@ -6,7 +6,7 @@ public class Version implements Comparable<Version> {
 
 	private final Double MAX_VERSION_PART = 100000d;
 
-	private String version = null;
+	private String version = "0.0.0";
 
 	private Double major = 0d;
 
@@ -15,6 +15,10 @@ public class Version implements Comparable<Version> {
 	private Double patch = 0d;
 
 	private Double scalarValue = 0d;
+	
+	public Version () {
+		
+	}
 
 	public Version(String version) {
 
@@ -44,6 +48,8 @@ public class Version implements Comparable<Version> {
 	}
 
 	private Double parsePart(String part) {
+		//crop any non-numeric characters
+		part  = part.replaceAll("[^\\d]", "");
 		Double val = 0d;
 		try {
 			val = Double.valueOf(part);
@@ -57,10 +63,6 @@ public class Version implements Comparable<Version> {
 							+ MAX_VERSION_PART);
 		}
 		return val;
-	}
-
-	public String getVersion() {
-		return version;
 	}
 
 	public Double getMajor() {
@@ -104,7 +106,11 @@ public class Version implements Comparable<Version> {
 			return false;
 		return true;
 	}
-
+	
+	@Override
+	public String toString() {
+		return version;
+	}
 
 	public int compareTo(Version that) {
 		if(this.getScalarValue() > that.getScalarValue()) {
@@ -122,6 +128,19 @@ public class Version implements Comparable<Version> {
 	
 	public boolean lessThan(Version that) {
 		return this.compareTo(that) < 0 ? true : false;
+	}
+	
+	public static Version parseVersion(String version) {
+		return new Version(version);
+	}
+	
+	public static boolean tryParse(String version) {
+		try {
+			new Version(version);
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 
 }
