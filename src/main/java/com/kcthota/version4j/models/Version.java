@@ -2,6 +2,11 @@ package com.kcthota.version4j.models;
 
 import com.kcthota.version4j.exceptions.VersionNotValidException;
 
+/**
+ * Version Model
+ * @author kc
+ *
+ */
 public class Version implements Comparable<Version> {
 
 	private final Double MAX_VERSION_PART = 100000d;

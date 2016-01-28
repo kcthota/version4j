@@ -1,5 +1,10 @@
 package com.kcthota.version4j.exceptions;
 
+/**
+ * VersionNotValidException
+ * @author kc
+ *
+ */
 public class VersionNotValidException extends RuntimeException {
 
 	public VersionNotValidException(String message) {

@@ -62,6 +62,19 @@ Version.parseVersion("100001.0.0"); //false
 
 ```
 
+## CompareTo
+
+Standard Comparable interface
+
+```
+Version v1 = new Version("1.2.3");
+		
+Version v2 = Version.parseVersion("1.2");
+		
+v1.compareTo(v2); //1
+
+```
+
 ## Greater than
 
 ```
