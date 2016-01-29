@@ -1,7 +1,7 @@
 package com.kcthota.version4j.exceptions;
 
 /**
- * VersionNotValidException
+ * Exception thrown if the String version passed is not parseable
  * @author kc
  *
  */

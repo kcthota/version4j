@@ -1,4 +1,12 @@
 # version4j
+=============
+
+[![Build Status](https://img.shields.io/travis/kcthota/version4j/master.svg)](https://travis-ci.org/kcthota/version4j)
+[![Coverage Status](https://img.shields.io/coveralls/kcthota/version4j/master.svg)](https://coveralls.io/r/kcthota/version4j?branch=master)
+[![The MIT License] (https://img.shields.io/github/license/kcthota/version4j.svg)] (https://raw.githubusercontent.com/kcthota/version4j/master/LICENSE)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.kcthota/version4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.kcthota/version4j)
+[![Java Doc] (https://img.shields.io/badge/javadoc-3.0-brightgreen.svg)] (http://www.javadoc.io/doc/com.kcthota/version4j)
+
 Library to help compare major.minor.patch versions.
 
 Implements the standard Comparable and Comparator Interfaces.

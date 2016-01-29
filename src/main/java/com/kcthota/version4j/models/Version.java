@@ -22,6 +22,10 @@ public class Version implements Comparable<Version> {
 	private Double scalarValue = 0d;
 	
 
+	/**
+	 * Builds version object from passed String. Throws VersionNotValidException if not parseable.
+	 * @param version
+	 */
 	public Version(String version) {
 
 		if (version != null && version.trim().length() > 0) {
@@ -67,18 +71,34 @@ public class Version implements Comparable<Version> {
 		return val;
 	}
 
+	/**
+	 * Get the version major value
+	 * @return
+	 */
 	public Double getMajor() {
 		return major;
 	}
 
+	/**
+	 * Gets the version minor value
+	 * @return
+	 */
 	public Double getMinor() {
 		return minor;
 	}
 
+	/**
+	 * Gets the version patch value
+	 * @return
+	 */
 	public Double getPatch() {
 		return patch;
 	}
 
+	/**
+	 * Gets the unique scalar value for a version
+	 * @return
+	 */
 	public Double getScalarValue() {
 		return scalarValue;
 	}
@@ -109,11 +129,20 @@ public class Version implements Comparable<Version> {
 		return true;
 	}
 	
+	/**
+	 * Returns the String representation of the Version
+	 */
 	@Override
 	public String toString() {
 		return version;
 	}
 
+	/**
+	 * Compares current Version with passed Version.
+	 * Returns 1 if current version is greater than passed Version
+	 * Returns 0 is equal
+	 * Returns -1 otherwise
+	 */
 	public int compareTo(Version that) {
 		if(this.getScalarValue().doubleValue() > that.getScalarValue().doubleValue()) {
 			return 1;
@@ -124,18 +153,39 @@ public class Version implements Comparable<Version> {
 		}
 	}
 	
+	/**
+	 * Checks if current Version object is greater than the passed Version object
+	 * @param that
+	 * @return
+	 */
 	public boolean greaterThan(Version that) {
 		return this.compareTo(that) > 0 ? true : false;
 	}
 	
+	/**
+	 * Checks if current Version object is less than the passed Version object
+	 * @param that
+	 * @return
+	 */
 	public boolean lessThan(Version that) {
 		return this.compareTo(that) < 0 ? true : false;
 	}
 	
+	/**
+	 * Parses the String version and returns a Version object. 
+	 * Throws VersionNotValidException if String is not parseable.
+	 * @param version
+	 * @return
+	 */
 	public static Version parseVersion(String version) {
 		return new Version(version);
 	}
 	
+	/**
+	 * Attempts to parse String to Version object. Returns true if parseable, else returns false.
+	 * @param version
+	 * @return
+	 */
 	public static boolean tryParse(String version) {
 		try {
 			new Version(version);

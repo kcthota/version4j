@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import com.kcthota.version4j.models.Version;
 /**
- * Version Comparator
+ * Comparator for sorting Version objects
  * @author kc
  *
  */
