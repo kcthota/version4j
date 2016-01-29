@@ -1,31 +1,100 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.kcthota</groupId>
-  <artifactId>version4j</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>com.kcthota</groupId>
+	<artifactId>version4j</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
 
-  <name>version4j</name>
-  <url>http://maven.apache.org</url>
+	<name>version4j</name>
+	<url>http://maven.apache.org</url>
+	<description>Library to help compare major.minor.patch versions</description>
+	<inceptionYear>2016</inceptionYear>
+	<developers>
+		<developer>
+			<id>kcthota</id>
+			<name>Krishna Chaitanya Thota</name>
+			<email>kcthota at gmail dot com</email>
+			<url>https://github.com/kcthota</url>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>The MIT License</name>
+			<url>https://raw.githubusercontent.com/kcthota/version4j/master/LICENSE</url>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:git:git://github.com/kcthota/version4j.git</connection>
+		<developerConnection>scm:git:git@github.com:kcthota/version4j.git</developerConnection>
+		<url>https://github.com/kcthota/version4j</url>
+	</scm>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<version>3.2.0</version>
 			<scope>test</scope>
 		</dependency>
-  </dependencies>
+	</dependencies>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.19</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<testSource>1.8</testSource>
+						<testTarget>1.8</testTarget>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eluder.coveralls</groupId>
+					<artifactId>coveralls-maven-plugin</artifactId>
+					<version>4.0.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<format>xml</format>
+						<maxmem>256m</maxmem>
+						<!-- aggregated reports for multi-module projects -->
+						<aggregate>true</aggregate>
+					</configuration>
+				</plugin>
+			</plugins>
+
+		</pluginManagement>
+	</build>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 </project>
