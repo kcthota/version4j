@@ -63,7 +63,7 @@ public class Version implements Comparable<Version> {
 			// do nothing and default to 0
 		}
 
-		if (val > MAX_VERSION_PART) {
+		if (val.compareTo(MAX_VERSION_PART) > 0) {
 			throw new VersionNotValidException(
 					"Major, minor and patch values cannot be larger than "
 							+ MAX_VERSION_PART);
@@ -144,13 +144,8 @@ public class Version implements Comparable<Version> {
 	 * Returns -1 otherwise
 	 */
 	public int compareTo(Version that) {
-		if(this.getScalarValue().doubleValue() > that.getScalarValue().doubleValue()) {
-			return 1;
-		} else if (this.getScalarValue().doubleValue() == that.getScalarValue().doubleValue()) {
-			return 0;
-		} else {
-			return -1;
-		}
+		
+		return this.getScalarValue().compareTo(that.getScalarValue());
 	}
 	
 	/**
