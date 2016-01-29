@@ -5,7 +5,16 @@ Implements the standard Comparable and Comparator Interfaces.
 
 # Usage
 
-Will soon be available on Maven Central.
+Stable:
+
+```
+<dependency>
+	<groupId>com.kcthota</groupId>
+	<artifactId>version4j</artifactId>
+	<version>1.0</version>
+</dependency>
+
+```
 
 # Examples
 
@@ -119,4 +128,11 @@ versions.sort(new VersionComparator());
 
 #License
 
-MIT
+The MIT License
+
+Copyright 2015 Krishna Chaitanya Thota. All rights reserved.
+
+#References
+
+Inspired by Version class from .NET framework at https://msdn.microsoft.com/en-us/library/system.version(v=vs.100).aspx
+
