@@ -21,9 +21,6 @@ public class Version implements Comparable<Version> {
 
 	private Double scalarValue = 0d;
 	
-	public Version () {
-		
-	}
 
 	public Version(String version) {
 
@@ -118,9 +115,9 @@ public class Version implements Comparable<Version> {
 	}
 
 	public int compareTo(Version that) {
-		if(this.getScalarValue() > that.getScalarValue()) {
+		if(this.getScalarValue().doubleValue() > that.getScalarValue().doubleValue()) {
 			return 1;
-		} else if (this.getScalarValue() == that.getScalarValue()) {
+		} else if (this.getScalarValue().doubleValue() == that.getScalarValue().doubleValue()) {
 			return 0;
 		} else {
 			return -1;
@@ -128,7 +125,7 @@ public class Version implements Comparable<Version> {
 	}
 	
 	public boolean greaterThan(Version that) {
-		return this.compareTo(that) > 1 ? true : false;
+		return this.compareTo(that) > 0 ? true : false;
 	}
 	
 	public boolean lessThan(Version that) {

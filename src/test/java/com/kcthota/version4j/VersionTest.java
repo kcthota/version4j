@@ -4,7 +4,9 @@ package com.kcthota.version4j;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,7 +28,7 @@ public class VersionTest {
 		
 		Version v2 = Version.parseVersion("1.2");
 		
-		assertThat(v1.compareTo(v2) > 0);
+		assertThat(v1.compareTo(v2) > 0).isTrue();
 	}
 	
 	@Test
@@ -35,15 +37,15 @@ public class VersionTest {
 		
 		Version v2 = new Version("1.0.0");
 		
-		assertThat(v1.compareTo(v2) > 0);
+		assertThat(v1.compareTo(v2) > 0).isTrue();
 	}
 	
 	@Test
 	public void tryParseTest() {
 		assertThat(Version.tryParse("")).isFalse();
-		assertThat(Version.tryParse("10"));
+		assertThat(Version.tryParse("10")).isTrue();
 		assertThat(Version.tryParse(" ")).isFalse();
-		assertThat(Version.tryParse("10.0"));
+		assertThat(Version.tryParse("10.0")).isTrue();
 		assertThat(Version.tryParse("10.0.1x")).isTrue();
 		assertThat(Version.tryParse("v10.0.1")).isTrue();
 	}
@@ -54,7 +56,7 @@ public class VersionTest {
 		
 		Version v2 = new Version("0.0.9");
 		
-		assertThat(v1.lessThan(v2));
+		assertThat(v1.greaterThan(v2)).isTrue();
 	}
 	
 	@Test
@@ -63,7 +65,16 @@ public class VersionTest {
 		
 		Version v2 = new Version("10.1.0");
 		
-		assertThat(v1.lessThan(v2));
+		assertThat(v1.lessThan(v2)).isTrue();
+	}
+	
+	@Test
+	public void equalTest() {
+		Version v1 = new Version("1.0");
+		
+		Version v2 = new Version("1.0.0");
+		
+		assertThat(v1.compareTo(v2)).isEqualTo(0);
 	}
 	
 	@Test
@@ -147,18 +158,34 @@ public class VersionTest {
 		Version v2 = new Version("0.095.3");
 		Version v3 = new Version("10.0.1");
 		Version v4 = new Version("0.0.1");
+		Version v5 = new Version("2.0.0");
 		
 		List<Version> versions = new ArrayList<Version>();
 		versions.add(v1);
 		versions.add(v2);
 		versions.add(v3);
 		versions.add(v4);
+		versions.add(v5);
 		
 		versions.sort(new VersionComparator());
 		
 		assertThat(versions.get(0).toString()).isEqualTo("0.0.1");
 		assertThat(versions.get(1).toString()).isEqualTo("0.095.3");
 		assertThat(versions.get(2).toString()).isEqualTo("2.0.0");
-		assertThat(versions.get(3).toString()).isEqualTo("10.0.1");
+		assertThat(versions.get(3).toString()).isEqualTo("2.0.0");
+		assertThat(versions.get(4).toString()).isEqualTo("10.0.1");
+	}
+	
+	@Test
+	public void equalityTest() {
+		Version v1 = new Version("1.1.1");
+		
+		Version v2 = new Version("1.1.1");
+		
+		Set<Version> set = new HashSet<Version>();
+		set.add(v1);
+		set.add(v2);
+		
+		assertThat(set.size()).isEqualTo(1);
 	}
 }
