@@ -130,7 +130,7 @@ versions.sort(new VersionComparator());
 
 The MIT License
 
-Copyright 2015 Krishna Chaitanya Thota. All rights reserved.
+Copyright 2016 Krishna Chaitanya Thota. All rights reserved.
 
 #References
 
