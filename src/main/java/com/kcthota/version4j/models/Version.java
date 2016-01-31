@@ -49,8 +49,8 @@ public class Version implements Comparable<Version> {
 	}
 
 	private Double calculateScalarValue() {
-		return major * Math.pow(MAX_VERSION_PART, 2d) + minor
-				* MAX_VERSION_PART + patch;
+		return major * Math.pow(MAX_VERSION_PART, 2d) + (major > 0 ? 1 : 0) + minor
+				* MAX_VERSION_PART + (minor > 0 ? 1 : 0) + patch;
 	}
 
 	private Double parsePart(String part) {

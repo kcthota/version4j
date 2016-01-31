@@ -188,4 +188,17 @@ public class VersionTest {
 		
 		assertThat(set.size()).isEqualTo(1);
 	}
+	
+	@Test
+	public void boundaryTest() {
+		Version v1 = new Version("0.1.0");
+		
+		Version v2 = new Version("0.0.100000");
+		
+		Version v3 = new Version("1.100000.0");
+		
+		assertThat(v1.greaterThan(v2)).isTrue();
+		
+		assertThat(v3.greaterThan(v1)).isTrue();
+	}
 }

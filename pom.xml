@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>version4j</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/kcthota/version4j</url>
 	<description>Library to help compare major.minor.patch versions</description>
 	<inceptionYear>2016</inceptionYear>
 	<developers>
