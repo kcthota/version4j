@@ -144,3 +144,7 @@ Copyright 2016 Krishna Chaitanya Thota. All rights reserved.
 
 Inspired by Version class from .NET framework at https://msdn.microsoft.com/en-us/library/system.version(v=vs.100).aspx
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kcthota/version4j/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
