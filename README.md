@@ -19,7 +19,7 @@ Stable:
 <dependency>
 	<groupId>com.kcthota</groupId>
 	<artifactId>version4j</artifactId>
-	<version>3.0</version>
+	<version>4.0</version>
 </dependency>
 
 ```
