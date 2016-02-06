@@ -37,7 +37,7 @@ public class VersionTest {
 		
 		Version v2 = new Version("1.0.0");
 		
-		assertThat(v1.compareTo(v2) > 0).isTrue();
+		assertThat(v1.compareTo(v2) < 0).isTrue();
 	}
 	
 	@Test
