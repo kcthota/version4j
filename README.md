@@ -3,9 +3,7 @@
 
 [![Build Status](https://img.shields.io/travis/kcthota/version4j/master.svg)](https://travis-ci.org/kcthota/version4j)
 [![Coverage Status](https://img.shields.io/coveralls/kcthota/version4j/master.svg)](https://coveralls.io/r/kcthota/version4j?branch=master)
-[![The MIT License] (https://img.shields.io/badge/License-The%20MIT%20License-brightgreen.svg)] (https://raw.githubusercontent.com/kcthota/version4j/master/LICENSE)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.kcthota/version4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.kcthota/version4j)
-[![Java Doc] (https://img.shields.io/badge/javadoc-2.0-brightgreen.svg)] (http://www.javadoc.io/doc/com.kcthota/version4j)
 
 Library to help compare major.minor.patch versions.
 
@@ -59,23 +57,23 @@ Tries to parse the passed String. Returns true if successfully parses the String
 This method does not throw an exception.
 
 ```
-Version.parseVersion("1.1.2"); //true
+Version.tryParse("1.1.2"); //true
 
-Version.parseVersion("1"); //true
+Version.tryParse("1"); //true
 
-Version.parseVersion("1.2"); //true
+Version.tryParse("1.2"); //true
 
-Version.parseVersion("1.2.3c"); //true
+Version.tryParse("1.2.3c"); //true
 
-Version.parseVersion("1.2.3c"); //true
+Version.tryParse("1.2.3c"); //true
 
-Version.parseVersion("1.2.3.4.5"); //true
+Version.tryParse("1.2.3.4.5"); //true
 
-Version.parseVersion(" "); //false
+Version.tryParse(" "); //false
 
-Version.parseVersion(null); //false
+Version.tryParse(null); //false
 
-Version.parseVersion("100001.0.0"); //false
+Version.tryParse("100001.0.0"); //false
 
 ```
 
@@ -143,7 +141,3 @@ Copyright 2016 Krishna Chaitanya Thota. All rights reserved.
 #References
 
 Inspired by Version class from .NET framework at https://msdn.microsoft.com/en-us/library/system.version(v=vs.100).aspx
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kcthota/version4j/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
